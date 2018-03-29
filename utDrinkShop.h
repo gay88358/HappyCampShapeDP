@@ -18,14 +18,14 @@ TEST(DrinkShop, create_drinkShop) {
 TEST(DrinkShop, add_drink) {
     DrinkShop *drinkShop = new DrinkShop("711");
     int previousMenuLegth = drinkShop->menuLength();
-    drinkShop->addDrink("伯爵紅茶", 50, 50);
+    drinkShop->addDrinkToMenu("伯爵紅茶", 50, 50);
     int menuLength = drinkShop->menuLength();
     ASSERT_EQ(1, menuLength - previousMenuLegth);
 }
 
 TEST(DrinkShop, get_drink_list) {
     DrinkShop *drinkShop = new DrinkShop("711");
-    drinkShop->addDrink("伯爵紅茶", 50, 50);
+    drinkShop->addDrinkToMenu("伯爵紅茶", 50, 50);
     vector<Drink*> v = drinkShop->getDrinks();
     ASSERT_EQ("伯爵紅茶", v[v.size() - 1]->name());
     ASSERT_EQ(50, v[v.size() - 1]->calorie());

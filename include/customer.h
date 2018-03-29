@@ -13,7 +13,7 @@ public:
     virtual void notify(int total);
     virtual void useBonusPoint();
     bool isEnoughBonusPoint() const;
-private:
+protected:
     unsigned int _id;
     string _name;
     unsigned int _bonusPoint;

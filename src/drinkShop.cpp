@@ -13,7 +13,16 @@ string DrinkShop::name() const {
     return this->_name;
 }
 
-void DrinkShop::addDrink(string name, unsigned int calorie, unsigned int price) {
+Customer* DrinkShop::customer() {
+    return this->_customer;
+}
+
+
+string DrinkShop::customerName() const {
+    return this->_customer->name();
+}
+
+void DrinkShop::addDrinkToMenu(string name, unsigned int calorie, unsigned int price) {
     this->_drinkLineItem->addDrink(new Drink(name, calorie, price));
 }
 

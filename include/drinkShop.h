@@ -15,10 +15,12 @@ using std::string;
 class DrinkShop {
 public:
     DrinkShop(string name);
+    Customer* customer();
+    string customerName() const;
     string name() const;
     int menuLength() const;
     vector<Drink*> getDrinks();
-    void addDrink(string name, unsigned int calorie, unsigned int price);
+    void addDrinkToMenu(string name, unsigned int calorie, unsigned int price);
     void createNewOrder(Customer *c);
     void addDrinkToOrder(Drink *d);
     Order* currentOrder();

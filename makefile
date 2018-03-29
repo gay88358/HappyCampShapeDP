@@ -5,18 +5,18 @@ PSHELL = ui
 
 all: $(TARGET) $(PSHELL)
 
-$(TARGET): main.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o
+$(TARGET): main.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o
 ifeq (${OS}, Windows_NT) 
-	g++ -o $(TARGET) main.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o -lgtest
+	g++ -o $(TARGET) main.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o -lgtest
 else
-	g++ -o $(TARGET) main.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o -lgtest -lpthread
+	g++ -o $(TARGET) main.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o -lgtest -lpthread
 endif
 
-$(PSHELL): mainUi.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o
+$(PSHELL): mainUi.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o
 ifeq (${OS}, Windows_NT) 
-	g++ -o $(PSHELL) mainUi.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o -lgtest
+	g++ -o $(PSHELL) mainUi.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o -lgtest
 else
-	g++ -o $(PSHELL) mainUi.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o -lgtest -lpthread
+	g++ -o $(PSHELL) mainUi.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o -lgtest -lpthread
 endif
 
 mainUi.o: mainUi.cpp
@@ -33,6 +33,13 @@ reader.o: $(INC_DIR)/reader.h $(SRC)/reader.cpp
 
 customer.o: $(INC_DIR)/customer.h $(SRC)/customer.cpp
 	g++ -std=gnu++0x -c $(SRC)/customer.cpp
+
+regularCustomer.o: $(INC_DIR)/regularCustomer.h $(SRC)/regularCustomer.cpp
+	g++ -std=gnu++0x -c $(SRC)/regularCustomer.cpp
+
+vipCustomer.o: $(INC_DIR)/vipCustomer.h $(SRC)/vipCustomer.cpp
+	g++ -std=gnu++0x -c $(SRC)/vipCustomer.cpp
+
 
 observer.o: $(INC_DIR)/observer.h $(SRC)/observer.cpp
 	g++ -std=gnu++0x -c $(SRC)/observer.cpp
