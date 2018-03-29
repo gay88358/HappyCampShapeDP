@@ -19,7 +19,7 @@ void Customer::addBonusPoint(unsigned int bonusPoint) {
 unsigned int Customer::getBonusPoint() {
     return this->_bonusPoint;
 }
-
+    
 void Customer::notify(int total) {
     cout << "Calling" << endl;
     this->_bonusPoint += (total / 30);

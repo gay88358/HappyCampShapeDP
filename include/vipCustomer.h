@@ -8,6 +8,7 @@ using std::string;
 class VipCustomer : public Customer{
 public:
     VipCustomer(string name);
+
 };
 
 #endif

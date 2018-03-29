@@ -150,12 +150,19 @@ void showHistoryReceipt(DrinkShop *drinkShop) {
 
 void initailizeDrinkShopWithCustomer(vector<DrinkShop*> &drinkShops) {
     vector<pair<string, string>> shopData = { pair<string, string>("Jack(VIP)", "ForJack"), 
-                                         pair<string, string>("Alice", "ForAlice"),
-                                         pair<string, string>("Jeff", "ForJeff"),
-                                         pair<string, string>("Adela(VIP)", "ForAdela"),
-                                         pair<string, string>("Justin", "ForJustin"), };
-    
-    for (int i = 0; i < shopData.size(); i++) {
+                                              pair<string, string>("Adela(VIP)", "ForAdela"),
+                                              pair<string, string>("Alice", "ForAlice"),
+                                              pair<string, string>("Jeff", "ForJeff"),
+                                              pair<string, string>("Justin", "ForJustin"), };
+
+    for (int i = 0; i < 2; i++) {
+        Customer *customer = new VipCustomer(shopData[i].first);
+        DrinkShop *shop = new DrinkShop(shopData[i].second);
+        shop->createNewOrder(customer);
+        drinkShops.push_back(shop);
+    }
+
+    for (int i = 2; i < shopData.size(); i++) {
         Customer *customer = new RegularCustomer(shopData[i].first);
         DrinkShop *shop = new DrinkShop(shopData[i].second);
         shop->createNewOrder(customer);

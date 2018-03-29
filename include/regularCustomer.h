@@ -9,7 +9,7 @@ using std::string;
 class RegularCustomer : public Customer {
 public:
     RegularCustomer(string name);
-    //virtual void notify(int total);
+    // virtual void notify(int total);
     //virtual void useBonusPoint();
 };
 

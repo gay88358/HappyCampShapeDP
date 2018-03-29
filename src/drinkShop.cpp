@@ -17,7 +17,6 @@ Customer* DrinkShop::customer() {
     return this->_customer;
 }
 
-
 string DrinkShop::customerName() const {
     return this->_customer->name();
 }

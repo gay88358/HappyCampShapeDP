@@ -4,6 +4,9 @@
 #include "./drinkLineItem.h"
 #include "./observer.h"
 
+#include "./regularCustomer.h"
+#include "./vipCustomer.h"
+
 class Order {
 public:
     Order();

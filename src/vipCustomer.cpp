@@ -3,3 +3,4 @@
 VipCustomer::VipCustomer(string name): Customer(name) {
 
 }
+
