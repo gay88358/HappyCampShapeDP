@@ -2,12 +2,17 @@
 #define UTORDER_H
 
 #include "./include/order.h"
+#include "./include/regularOrder.h"
+#include "./include/vipOrder.h"
 #include "./include/drink.h"
 #include "./include/reader.h"
 #include "./include/customer.h"
 #include "./include/observer.h"
 #include "./include/orderLineItem.h"
+#include <iostream>
 
+using std::cout;
+using std::endl;
 TEST(OrderLineItem, add_order) {
     OrderLineItem *oline = new OrderLineItem();
     Customer *c = new Customer("Z-Xuan Hong");
@@ -109,5 +114,27 @@ TEST(Order, CustomerUseBoundDrink) {
     order2->finishOrder();
     ASSERT_EQ(43, c->getBonusPoint());
 }
+
+TEST(Order, regularOrder) {
+    Customer *c = new Customer("Z-Xuan Hong");
+    Order *order = new RegularOrder(c);
+    order->addOrder(new Drink("南非茶", 100, 1000));
+    order->addOrder(new Drink("南非茶", 100, 50));
+    order->addOrder(new Drink("南非茶", 100, 250));
+    order->finishOrder();
+    ASSERT_EQ(43, c->getBonusPoint());
+}
+
+TEST(Order, vipOrder) {
+    Customer *c = new Customer("Hong");
+    Order *order = new VipOrder(c);
+    order->addOrder(new Drink("南非國寶茶", 100, 1000));
+    order->addOrder(new Drink("南非茶", 100, 50));
+    order->addOrder(new Drink("南非茶", 100, 250));
+    cout << order->total() << endl;
+    order->finishOrder();
+    ASSERT_EQ(76, c->getBonusPoint());
+}
+
 
 #endif

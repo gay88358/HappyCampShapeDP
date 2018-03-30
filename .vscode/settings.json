@@ -18,6 +18,7 @@
         "map": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "__split_buffer": "cpp"
     }
 }

@@ -49,8 +49,6 @@ Order* DrinkShop::currentOrder() {
 
 void DrinkShop::endOrder() {
     Order *order = currentOrder();
-
-
     order->finishOrder();
     createNewOrder(this->_customer);
 }

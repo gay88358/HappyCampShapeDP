@@ -21,7 +21,6 @@ public:
     int menuLength() const;
     vector<Drink*> getDrinks();
     void addDrinkToMenu(string name, unsigned int calorie, unsigned int price);
-    void createNewOrder(Customer *c);
     void addDrinkToOrder(Drink *d);
     Order* currentOrder();
     void endOrder();
@@ -30,7 +29,9 @@ public:
     vector<string> getMenu();
     vector<Order*> getOrderVector();
     bool isEnoughBonusPoint() const;
-private:
+    // template method
+    virtual void createNewOrder(Customer *c);
+protected:
     void initializeDrinkList();
     Customer * _customer = nullptr;
     string _name;

@@ -15,9 +15,10 @@ public:
     int total() const;
     string receipt() const;
     bool isEmpty() const;
-    void finishOrder();
     void setBonusDrink();
-private:
+    // template method
+    virtual void finishOrder();
+protected:
     Observer *_observerCustomer = nullptr;
     DrinkLineItem* _drinkLineItem = nullptr;
 };

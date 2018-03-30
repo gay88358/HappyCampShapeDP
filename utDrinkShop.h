@@ -4,12 +4,18 @@
 #include "./include/drinkShop.h"
 #include "./include/customer.h"
 #include "./include/order.h"
+#include "./include/regularDrinkShop.h"
+#include "./include/vipDrinkShop.h"
+#include "./include/shopFactory.h"
+
 #include <iostream>
 #include <iomanip>
 
 
 using std::cout;
 using std::endl;
+
+
 TEST(DrinkShop, create_drinkShop) {
     DrinkShop *drinkShop = new DrinkShop("711");
     ASSERT_EQ("711", drinkShop->name());
@@ -36,7 +42,6 @@ TEST(DrinkShop, initialize_drinkList) {
     DrinkShop *drinkShop = new DrinkShop("711");
     ASSERT_EQ(9, drinkShop->menuLength());
 }
-
 
 TEST(DrinkShop, order_drink) {
     DrinkShop *drinkShop = new DrinkShop("711");
@@ -67,7 +72,7 @@ TEST(DrinkShop, multiple_order) {
     drinkShop->addDrinkToOrder(new Drink("伯茶", 20, 60));
     drinkShop->endOrder();
     ASSERT_EQ(8, c->getBonusPoint());
-    cout << drinkShop->getReceipt() << endl;;
+    cout << drinkShop->getReceipt() << endl;
 }
 
 TEST(DrinkShop, isTheSameNameInDrinks) {
@@ -102,4 +107,60 @@ TEST(DrinkShop, getOrderVector) {
     ASSERT_EQ(140, orders[0]->total());
     ASSERT_EQ(130, orders[1]->total());
 }   
+
+TEST(VipDrinkShop, vipOrder) {
+    DrinkShop *drinkShop = new VipDrinkShop("711");
+    Customer *c = new Customer("Z-Xuan Hong");
+    drinkShop->createNewOrder(c);
+    drinkShop->addDrinkToOrder(new Drink("南非國寶茶", 50, 300));
+    drinkShop->addDrinkToOrder(new Drink("紅茶", 20, 30));
+    drinkShop->addDrinkToOrder(new Drink("伯茶", 20, 60));
+    drinkShop->endOrder();
+    ASSERT_EQ(23, c->getBonusPoint());
+
+    drinkShop->createNewOrder(c);
+    drinkShop->addDrinkToOrder(new Drink("伯爵紅茶", 50, 50));
+    drinkShop->addDrinkToOrder(new Drink("紅茶", 20, 30));
+    drinkShop->addDrinkToOrder(new Drink("伯茶", 20, 60));
+    drinkShop->endOrder();
+    ASSERT_EQ(27, c->getBonusPoint());
+    cout << drinkShop->getReceipt() << endl;
+}
+
+
+TEST(RegularDrinkShop, regularOrder) {
+    DrinkShop *drinkShop = new RegularDrinkShop("711");
+    Customer *c = new Customer("Z-Xuan Hong");
+    drinkShop->createNewOrder(c);
+    drinkShop->addDrinkToOrder(new Drink("伯爵紅茶", 50, 50));
+    drinkShop->addDrinkToOrder(new Drink("紅茶", 20, 30));
+    drinkShop->addDrinkToOrder(new Drink("伯茶", 20, 60));
+    drinkShop->endOrder();
+    ASSERT_EQ(4, c->getBonusPoint());
+
+    drinkShop->createNewOrder(c);
+    drinkShop->addDrinkToOrder(new Drink("伯爵紅茶", 50, 50));
+    drinkShop->addDrinkToOrder(new Drink("紅茶", 20, 30));
+    drinkShop->addDrinkToOrder(new Drink("伯茶", 20, 60));
+    drinkShop->endOrder();
+    ASSERT_EQ(8, c->getBonusPoint());
+    cout << drinkShop->getReceipt() << endl;
+}
+
+TEST(ShopFactory, createVipShop) {
+    ShopFactory *factory = new ShopFactory();
+    DrinkShop *vipShop = factory->createVipDrinkShop("Z-Xuan Hong");
+    Customer *customer = vipShop->customer(); 
+    VipCustomer *vc = dynamic_cast<VipCustomer*>(customer);
+    ASSERT_TRUE(vc != nullptr);
+}
+
+TEST(ShopFactory, createRegularShop) {
+    ShopFactory *factory = new ShopFactory();
+    DrinkShop *rShop = factory->createRegularShop("Z-Xuan Hong");
+    Customer *customer = rShop->customer(); 
+    RegularCustomer *vc = dynamic_cast<RegularCustomer*>(customer);
+    ASSERT_TRUE(vc != nullptr);
+}
+
 #endif
