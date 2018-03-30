@@ -24,10 +24,6 @@ void displayUserInterface() {
     cout << "7.回上一頁" << endl;
 }
 
-void handleSystemCommand(DrinkShop *drinkShop) {
-    
-}
-
 template<typename T>
 T validInput(string errorMessage) {
     T number;
