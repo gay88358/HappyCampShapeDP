@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
-//#include "utDrink.h"
-//#include "utCustomer.h"
+#include "utDrink.h"
+#include "utCustomer.h"
 #include "utDrinkShop.h"
-//#include "utOrder.h"
+#include "utOrder.h"
 
 int main( int argc , char **argv )
 {

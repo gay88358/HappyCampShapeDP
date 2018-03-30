@@ -51,11 +51,6 @@ TEST(Drink, drinkVector) {
     }
 }
 
-TEST(Drink, getDrinkDataString) {
-    Drink *d = new Drink("南非國寶茶", 100, 25);
-    ASSERT_EQ("南非國寶茶\t\t100\t\t25", d->getDrinkDataString());
-}
-
 TEST(DrinkLineItem, isDuplicateName) {
     DrinkLineItem *dline = new DrinkLineItem();
     dline->addDrink(new Drink("南非茶", 100, 25));
