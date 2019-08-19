@@ -8,6 +8,11 @@
 #include "../include/triangle.h"
 #include "../include/point.h"
 
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 Shape* Shape::createTriangle(vector<Point*> points) {
     return new Triangle(points);
 }
@@ -30,23 +35,28 @@ Shape* Shape::createComposite() {
 }
 
 
-Shape* Shape::createComposite(ShapeFormatter * shapeFormatter) {
-    return new Composite(shapeFormatter);
-}
+// Shape* Shape::createComposite(ShapeFormatter * shapeFormatter) {
+//     return new Composite(shapeFormatter);
+// }
 
 Shape::Shape(string type) {
     this->_type = type;
 }
 
-Shape::Shape(ShapeFormatter * shapeFormatter) {
-    this->_shapeFormatter = shapeFormatter;
-}
+// Shape::Shape(ShapeFormatter * shapeFormatter) {
+//     this->_shapeFormatter = shapeFormatter;
+// }
 
-string Shape::getFormattedData() {
-    this->_shapeFormatter->formatting(this);
-    return this->_shapeFormatter->getFormattedData();
-}
+// string Shape::getFormattedData() {
+//     this->_shapeFormatter->formatting(this);
+//     return this->_shapeFormatter->getFormattedData();
+// }
 
+
+string Shape::getFormattedData(ShapeFormatter *shapeFormatter) {
+    shapeFormatter->formatting(this);
+    return shapeFormatter->getFormattedData();
+}
 
 void Shape::add(Shape* shape) {
     // throw exception

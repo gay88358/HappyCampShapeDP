@@ -4,8 +4,7 @@ Composite::Composite(): Shape("Composite") {
 
 }
 
-Composite::Composite(ShapeFormatter *shapeFormatter): Shape(shapeFormatter) {
-}
+
 
 double Composite::calculateArea() {
     double totalArea = 0.;

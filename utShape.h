@@ -48,22 +48,23 @@ TEST(Shape, createComposite) {
 }
 
 TEST(Shape, compositeXMLFomatting) {
-    Shape *shape = Shape::createComposite(ShapeFormatter::xmlFormatter());
+    Shape *shape = Shape::createComposite();
     shape->add(Shape::createCircle(6));
     shape->add(Shape::createRectangle(1, 2));
     shape->add(Shape::createSqaure(2));
 
-    string compositeFormat = shape->getFormattedData();
+    
+    string compositeFormat = shape->getFormattedData(ShapeFormatter::xmlFormatter());
     ASSERT_EQ("<area>24.840000</area>" , compositeFormat);
 }
 
 TEST(Shape, compositePlainTextFomatting) {
-    Shape *shape = Shape::createComposite(ShapeFormatter::plainTextFormatter());
+    Shape *shape = Shape::createComposite();
     shape->add(Shape::createCircle(6));
     shape->add(Shape::createRectangle(1, 2));
     shape->add(Shape::createSqaure(2));
 
-    string compositeFormat = shape->getFormattedData();
+    string compositeFormat = shape->getFormattedData(ShapeFormatter::plainTextFormatter());
     ASSERT_EQ("the area is 24.840000" , compositeFormat);
 }
 

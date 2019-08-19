@@ -6,7 +6,6 @@
 class Composite : public Shape {
 public:
     Composite();
-    Composite(ShapeFormatter*);
     virtual double calculateArea();
     virtual void add(Shape* shape);
 private:

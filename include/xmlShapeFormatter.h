@@ -3,8 +3,6 @@
 
 #include "./shapeFormatter.h"
 
-
-
 class XMLShapeFormatter : public ShapeFormatter {
 public:
     XMLShapeFormatter();
