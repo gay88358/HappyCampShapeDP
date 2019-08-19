@@ -4,11 +4,11 @@ TARGET = shape
 
 all: $(TARGET) 
 
-$(TARGET): main.o shape.o rectangle.o circle.o square.o composite.o shapeFormatter.o xmlShapeFormatter.o plainTextShapeFormatter.o triangle.o point.o
+$(TARGET): main.o shape.o rectangle.o circle.o square.o triangle.o point.o
 ifeq (${OS}, Windows_NT) 
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o composite.o shapeFormatter.o xmlShapeFormatter.o plainTextShapeFormatter.o triangle.o point.o -lgtest
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o -lgtest
 else
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o composite.o shapeFormatter.o xmlShapeFormatter.o plainTextShapeFormatter.o triangle.o point.o -lgtest -lpthread
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o -lgtest -lpthread
 endif
 
 main.o: main.cpp
@@ -26,17 +26,17 @@ circle.o: $(INC_DIR)/circle.h $(SRC)/circle.cpp
 square.o: $(INC_DIR)/square.h $(SRC)/square.cpp
 	g++ -std=gnu++0x -c $(SRC)/square.cpp
 
-composite.o: $(INC_DIR)/composite.h $(SRC)/composite.cpp
-	g++ -std=gnu++0x -c $(SRC)/composite.cpp
+# composite.o: $(INC_DIR)/composite.h $(SRC)/composite.cpp
+# 	g++ -std=gnu++0x -c $(SRC)/composite.cpp
 
-shapeFormatter.o: $(INC_DIR)/shapeFormatter.h $(SRC)/shapeFormatter.cpp
-	g++ -std=gnu++0x -c $(SRC)/shapeFormatter.cpp
+# shapeFormatter.o: $(INC_DIR)/shapeFormatter.h $(SRC)/shapeFormatter.cpp
+# 	g++ -std=gnu++0x -c $(SRC)/shapeFormatter.cpp
 
-xmlShapeFormatter.o: $(INC_DIR)/xmlShapeFormatter.h $(SRC)/xmlShapeFormatter.cpp
-	g++ -std=gnu++0x -c $(SRC)/xmlShapeFormatter.cpp
+# xmlShapeFormatter.o: $(INC_DIR)/xmlShapeFormatter.h $(SRC)/xmlShapeFormatter.cpp
+# 	g++ -std=gnu++0x -c $(SRC)/xmlShapeFormatter.cpp
 
-plainTextShapeFormatter.o: $(INC_DIR)/plainTextShapeFormatter.h $(SRC)/plainTextShapeFormatter.cpp
-	g++ -std=gnu++0x -c $(SRC)/plainTextShapeFormatter.cpp
+# plainTextShapeFormatter.o: $(INC_DIR)/plainTextShapeFormatter.h $(SRC)/plainTextShapeFormatter.cpp
+# 	g++ -std=gnu++0x -c $(SRC)/plainTextShapeFormatter.cpp
 
 triangle.o: $(INC_DIR)/triangle.h $(SRC)/triangle.cpp
 	g++ -std=gnu++0x -c $(SRC)/triangle.cpp

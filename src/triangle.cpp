@@ -10,7 +10,6 @@ Triangle::Triangle(vector<Point*> points) : Shape("Triangle") {
     validate();
 }
 
-
 void Triangle::validate() {
     // validate
     cout << "empty validate" << endl;
