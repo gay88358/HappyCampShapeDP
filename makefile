@@ -1,74 +1,48 @@
 INC_DIR = include
 SRC = src
-TARGET = drink
-PSHELL = ui
+TARGET = shape
 
-all: $(TARGET) $(PSHELL)
+all: $(TARGET) 
 
-$(TARGET): main.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o regularOrder.o vipOrder.o regularDrinkShop.o vipDrinkShop.o shopFactory.o
+$(TARGET): main.o shape.o rectangle.o circle.o square.o composite.o shapeFormatter.o xmlShapeFormatter.o plainTextShapeFormatter.o triangle.o point.o
 ifeq (${OS}, Windows_NT) 
-	g++ -o $(TARGET) main.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o regularOrder.o vipOrder.o regularDrinkShop.o vipDrinkShop.o shopFactory.o -lgtest
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o composite.o shapeFormatter.o xmlShapeFormatter.o plainTextShapeFormatter.o triangle.o point.o -lgtest
 else
-	g++ -o $(TARGET) main.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o regularOrder.o vipOrder.o regularDrinkShop.o vipDrinkShop.o shopFactory.o -lgtest -lpthread
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o composite.o shapeFormatter.o xmlShapeFormatter.o plainTextShapeFormatter.o triangle.o point.o -lgtest -lpthread
 endif
-
-$(PSHELL): mainUi.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o regularOrder.o vipOrder.o regularDrinkShop.o vipDrinkShop.o shopFactory.o
-ifeq (${OS}, Windows_NT) 
-	g++ -o $(PSHELL) mainUi.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o regularOrder.o vipOrder.o regularDrinkShop.o vipDrinkShop.o shopFactory.o -lgtest
-else
-	g++ -o $(PSHELL) mainUi.o drink.o drinkLineItem.o order.o reader.o customer.o observer.o drinkShop.o orderLineItem.o regularCustomer.o vipCustomer.o regularOrder.o vipOrder.o regularDrinkShop.o vipDrinkShop.o shopFactory.o -lgtest -lpthread
-endif
-
-mainUi.o: mainUi.cpp
-	g++ -std=gnu++0x -c mainUi.cpp
 
 main.o: main.cpp
 	g++ -std=gnu++0x -c main.cpp
 
-drink.o: $(INC_DIR)/drink.h $(SRC)/drink.cpp
-	g++ -std=gnu++0x -c $(SRC)/drink.cpp
+shape.o: $(INC_DIR)/shape.h $(SRC)/shape.cpp
+	g++ -std=gnu++0x -c $(SRC)/shape.cpp
 
-reader.o: $(INC_DIR)/reader.h $(SRC)/reader.cpp
-	g++ -std=gnu++0x -c $(SRC)/reader.cpp
+rectangle.o: $(INC_DIR)/rectangle.h $(SRC)/rectangle.cpp
+	g++ -std=gnu++0x -c $(SRC)/rectangle.cpp
 
-customer.o: $(INC_DIR)/customer.h $(SRC)/customer.cpp
-	g++ -std=gnu++0x -c $(SRC)/customer.cpp
+circle.o: $(INC_DIR)/circle.h $(SRC)/circle.cpp
+	g++ -std=gnu++0x -c $(SRC)/circle.cpp
 
-regularCustomer.o: $(INC_DIR)/regularCustomer.h $(SRC)/regularCustomer.cpp
-	g++ -std=gnu++0x -c $(SRC)/regularCustomer.cpp
+square.o: $(INC_DIR)/square.h $(SRC)/square.cpp
+	g++ -std=gnu++0x -c $(SRC)/square.cpp
 
-vipCustomer.o: $(INC_DIR)/vipCustomer.h $(SRC)/vipCustomer.cpp
-	g++ -std=gnu++0x -c $(SRC)/vipCustomer.cpp
+composite.o: $(INC_DIR)/composite.h $(SRC)/composite.cpp
+	g++ -std=gnu++0x -c $(SRC)/composite.cpp
 
-observer.o: $(INC_DIR)/observer.h $(SRC)/observer.cpp
-	g++ -std=gnu++0x -c $(SRC)/observer.cpp
+shapeFormatter.o: $(INC_DIR)/shapeFormatter.h $(SRC)/shapeFormatter.cpp
+	g++ -std=gnu++0x -c $(SRC)/shapeFormatter.cpp
 
-order.o: $(INC_DIR)/order.h $(SRC)/order.cpp
-	g++ -std=gnu++0x -c $(SRC)/order.cpp
+xmlShapeFormatter.o: $(INC_DIR)/xmlShapeFormatter.h $(SRC)/xmlShapeFormatter.cpp
+	g++ -std=gnu++0x -c $(SRC)/xmlShapeFormatter.cpp
 
-vipOrder.o: $(INC_DIR)/vipOrder.h $(SRC)/vipOrder.cpp
-	g++ -std=gnu++0x -c $(SRC)/vipOrder.cpp
+plainTextShapeFormatter.o: $(INC_DIR)/plainTextShapeFormatter.h $(SRC)/plainTextShapeFormatter.cpp
+	g++ -std=gnu++0x -c $(SRC)/plainTextShapeFormatter.cpp
 
-regularOrder.o: $(INC_DIR)/regularOrder.h $(SRC)/regularOrder.cpp
-	g++ -std=gnu++0x -c $(SRC)/regularOrder.cpp
+triangle.o: $(INC_DIR)/triangle.h $(SRC)/triangle.cpp
+	g++ -std=gnu++0x -c $(SRC)/triangle.cpp
 
-regularDrinkShop.o: $(INC_DIR)/regularDrinkShop.h $(SRC)/regularDrinkShop.cpp
-	g++ -std=gnu++0x -c $(SRC)/regularDrinkShop.cpp
-
-drinkLineItem.o: $(INC_DIR)/drinkLineItem.h $(SRC)/drinkLineItem.cpp
-	g++ -std=gnu++0x -c $(SRC)/drinkLineItem.cpp
-
-orderLineItem.o: $(INC_DIR)/orderLineItem.h $(SRC)/orderLineItem.cpp
-	g++ -std=gnu++0x -c $(SRC)/orderLineItem.cpp
-
-drinkShop.o: $(INC_DIR)/drinkShop.h $(SRC)/drinkShop.cpp
-	g++ -std=gnu++0x -c $(SRC)/drinkShop.cpp
-
-vipDrinkShop.o: $(INC_DIR)/vipDrinkShop.h $(SRC)/vipDrinkShop.cpp
-	g++ -std=gnu++0x -c $(SRC)/vipDrinkShop.cpp
-
-shopFactory.o: $(INC_DIR)/shopFactory.h $(SRC)/shopFactory.cpp
-	g++ -std=gnu++0x -c $(SRC)/shopFactory.cpp
+point.o: $(INC_DIR)/point.h $(SRC)/point.cpp
+	g++ -std=gnu++0x -c $(SRC)/point.cpp
 
 clean:	
 ifeq (${OS}, Windows_NT) 

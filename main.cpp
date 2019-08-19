@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
-#include "utDrink.h"
-#include "utCustomer.h"
-#include "utDrinkShop.h"
-#include "utOrder.h"
+#include "./utShape.h"
+#include "./utShapeFormatter.h"
+#include "./utPoint.h"
 
 int main( int argc , char **argv )
 {
