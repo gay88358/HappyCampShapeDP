@@ -4,11 +4,11 @@ TARGET = shape
 
 all: $(TARGET) 
 
-$(TARGET): main.o shape.o rectangle.o circle.o square.o composite.o shapeFormatter.o xmlShapeFormatter.o plainTextShapeFormatter.o triangle.o point.o
+$(TARGET): main.o shape.o rectangle.o circle.o square.o composite.o triangle.o point.o
 ifeq (${OS}, Windows_NT) 
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o composite.o shapeFormatter.o xmlShapeFormatter.o plainTextShapeFormatter.o triangle.o point.o -lgtest
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o composite.o triangle.o point.o -lgtest
 else
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o composite.o shapeFormatter.o xmlShapeFormatter.o plainTextShapeFormatter.o triangle.o point.o -lgtest -lpthread
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o composite.o triangle.o point.o -lgtest -lpthread
 endif
 
 main.o: main.cpp

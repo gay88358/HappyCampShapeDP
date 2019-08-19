@@ -7,7 +7,6 @@ using std::vector;
 using std::string;
 
 class Point;
-class ShapeFormatter;
 class Shape {
 public:
     static Shape* createTriangle(vector<Point*> points);
@@ -21,7 +20,6 @@ public:
     // will throw exception
     virtual void add(Shape* shape);
     virtual double calculateArea() = 0;
-    string getFormattedData(ShapeFormatter *shapeFormatter);
 protected:
     vector<Shape*> _shapes;
 private:
