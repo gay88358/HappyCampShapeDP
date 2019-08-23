@@ -5,6 +5,8 @@
 TEST(Point, createPoint) {
     Point *p = new Point(1, 2);
     ASSERT_TRUE(p != nullptr);
+    ASSERT_EQ(1, p->getX());
+    ASSERT_EQ(2, p->getY());
 }
 
 TEST(Point, distance) {

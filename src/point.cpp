@@ -11,3 +11,11 @@ double Point::getDistanceFrom(Point* p) {
     double yy = (this->_y - p->_y) * (this->_y - p->_y);
     return yy;
 }
+
+double Point::getX() {
+    return this->_x;    
+}
+
+double Point::getY(){
+    return this->_y;
+}
