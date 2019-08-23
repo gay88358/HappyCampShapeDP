@@ -14,14 +14,14 @@ TEST(Shape, createTriangle) {
     points.push_back(p1);
     points.push_back(p2);
     points.push_back(p3);
-    
+    // Heron's formula
     Shape *shape = Shape::createTriangle(points);
     ASSERT_EQ(2, shape->calculateArea());
 }
 
 TEST(Shape, createRectangle) {
     Shape *shape = Shape::createRectangle(1, 2);
-    ASSERT_EQ(2, shape->calculateArea());
+    ASSERT_EQ(1 * 2, shape->calculateArea());
 }
 
 TEST(Shape, createCircle) {
