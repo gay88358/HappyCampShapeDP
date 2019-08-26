@@ -7,7 +7,12 @@
   - Creational
   - Structure
   - Behavior
- 
+* Design Pattern Core Concept
+  - Favor Object Composition Over Class Inheritance
+  - Programming To Interface, Not An Implementation
+* Composite
+* Strategy
+* Factory
 
 
 ## File System (Homework)
