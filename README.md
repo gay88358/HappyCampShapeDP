@@ -1,6 +1,16 @@
 # HappyCampShapeDP
+## Course Material
+* What is Design Pattern?
+* Design Pattern Template
+* How To Describe Design Pattern In Book?
+* Classification Of Design Pattern
+  - Creational
+  - Structure
+  - Behavior
+ 
 
-## File System
+
+## File System (Homework)
 
 ![](https://i.imgur.com/StRCrap.jpg)
 * 以下功能請全部撰寫`Unit test`，驗證功能無誤。
