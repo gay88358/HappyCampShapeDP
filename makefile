@@ -4,11 +4,11 @@ TARGET = shape
 
 all: $(TARGET) 
 
-$(TARGET): main.o shape.o rectangle.o circle.o square.o triangle.o point.o
+$(TARGET): main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o
 ifeq (${OS}, Windows_NT) 
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o -lgtest
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o -lgtest
 else
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o -lgtest -lpthread
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o -lgtest -lpthread
 endif
 
 main.o: main.cpp
@@ -25,6 +25,9 @@ circle.o: $(INC_DIR)/circle.h $(SRC)/circle.cpp
 
 square.o: $(INC_DIR)/square.h $(SRC)/square.cpp
 	g++ -std=gnu++0x -c $(SRC)/square.cpp
+
+shapePrinter.o: $(INC_DIR)/shapePrinter.h $(SRC)/shapePrinter.cpp
+	g++ -std=gnu++0x -c $(SRC)/shapePrinter.cpp
 
 # composite.o: $(INC_DIR)/composite.h $(SRC)/composite.cpp
 # 	g++ -std=gnu++0x -c $(SRC)/composite.cpp
