@@ -8,8 +8,8 @@ public:
     Square(double side);
     virtual double calculateArea();
 private:
+// state, field, member variable, private member variable
     double _side;
 };
-
 
 #endif

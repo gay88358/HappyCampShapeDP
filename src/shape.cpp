@@ -5,11 +5,22 @@
 
 #include "../include/triangle.h"
 #include "../include/point.h"
+#include "../include/composite.h"
 
 #include <iostream>
 
 using std::cout;
 using std::endl;
+
+
+
+void Shape::add(Shape*) {
+
+}
+
+Shape* Shape::createComposite() {
+    return new Composite();
+}
 
 Shape* Shape::createTriangle(vector<Point*> points) {
     return new Triangle(points);

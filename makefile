@@ -4,11 +4,11 @@ TARGET = shape
 
 all: $(TARGET) 
 
-$(TARGET): main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o
+$(TARGET): main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o composite.o
 ifeq (${OS}, Windows_NT) 
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o -lgtest
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o composite.o -lgtest
 else
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o -lgtest -lpthread
+	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o composite.o -lgtest -lpthread
 endif
 
 main.o: main.cpp
@@ -29,8 +29,8 @@ square.o: $(INC_DIR)/square.h $(SRC)/square.cpp
 shapePrinter.o: $(INC_DIR)/shapePrinter.h $(SRC)/shapePrinter.cpp
 	g++ -std=gnu++0x -c $(SRC)/shapePrinter.cpp
 
-# composite.o: $(INC_DIR)/composite.h $(SRC)/composite.cpp
-# 	g++ -std=gnu++0x -c $(SRC)/composite.cpp
+composite.o: $(INC_DIR)/composite.h $(SRC)/composite.cpp
+ 	g++ -std=gnu++0x -c $(SRC)/composite.cpp
 
 # shapeFormatter.o: $(INC_DIR)/shapeFormatter.h $(SRC)/shapeFormatter.cpp
 # 	g++ -std=gnu++0x -c $(SRC)/shapeFormatter.cpp

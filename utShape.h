@@ -16,11 +16,15 @@ using std::endl;
 
 TEST(Shape, unitTestStepTemplate) {
 // 1. Create the object that you want to test.
+
 // 2. Invoke the method of object that you want to test.
+
 // 3. Verify the state of object
 }
 
+
 TEST(Shape, createTriangleContainedThreeSide) {
+    // create
     Triangle *triangle = new Triangle(1, 2, 3);
     //Shape *shape = Shape::createTriangle(points);
     ASSERT_EQ(1, triangle->getSideA());
@@ -37,43 +41,27 @@ TEST(Shape, createTriangle) {
     points.push_back(p2);
     points.push_back(p3);
     // Heron's formula
-    Shape *shape = new Triangle(points);
-    //Shape *shape = Shape::createTriangle(points);
+    // Shape *shape = new Triangle(points);
+    Shape *shape = Shape::createTriangle(points);
     ASSERT_EQ(2, shape->calculateArea());
 }
 
 
 TEST(Shape, createRectangle) {
-    Shape *shape = new Rectangle(1, 2);
-    // Shape *shape = Shape::createRectangle(1, 2);
+    Shape *shape = Shape::createRectangle(1, 2);
     ASSERT_EQ(1 * 2, shape->calculateArea());
 }
 
 TEST(Shape, createCircle) {
-    Shape *shape = new Circle(6);
-    // Shape *shape = Shape::createCircle(6);
+    Shape *shape = Shape::createCircle(6);
     ASSERT_EQ(6 * 3.14, shape->calculateArea());
 }
 
 TEST(Shape, createSquare) {
-    Shape *shape = new Square(1.5);
-    //Shape *shape = Shape::createSqaure(1.5);
+    Shape *shape = Shape::createSqaure(1.5);
     ASSERT_EQ(1.5 * 1.5, shape->calculateArea());
 }
 
-/*
-TEST(Shape, compositeShape) {
-    vector<Shape*> shapes;
-    shapes.push_back(Shape::createCircle(1));
-    shapes.push_back(Shape::createSqaure(2));
-    shapes.push_back(Shape::createRectangle(2, 3));
-
-    double result = 0.;
-    for (int i = 0; i < shapes.size(); i++) {
-        result += shapes[i]->calculateArea();
-    }
-    ASSERT_EQ(13.14, result);
-}
 
 TEST(ShapePrinter, getShapeInformation) {
 // creat an object
@@ -87,10 +75,12 @@ TEST(ShapePrinter, getShapeInformation) {
 
 TEST(ShapePrinter, getShapesInformation) {
 // creat an object
+// container: vector, list, array
     vector<Shape*> shapes;
     shapes.push_back(Shape::createCircle(1));
     shapes.push_back(Shape::createSqaure(2));
     shapes.push_back(Shape::createRectangle(2, 3));
+
     ShapePrinter *printer = new ShapePrinter();
 // invoke operation on an object
     printer->generateDisplayInformation(shapes);
@@ -98,5 +88,21 @@ TEST(ShapePrinter, getShapesInformation) {
     string information = printer->getDisplayInformation();
     ASSERT_EQ("this area is 13", information);
 }
-*/
+
+
+TEST(Shape, createCompositeShape) {
+// create a composite object
+    Shape *composite = Shape::createComposite();
+    composite->add(Shape::createSqaure(2));
+    composite->add(Shape::createRectangle(2, 3));
+// invoke method of composite object
+    double compositeArea = composite->calculateArea();
+// verify the state of an object
+    double sqaureArea = 2 * 2;
+    double rectangleArea = 2 * 3;
+    ASSERT_EQ(sqaureArea + rectangleArea, compositeArea);
+}
+
+
+
 #endif
