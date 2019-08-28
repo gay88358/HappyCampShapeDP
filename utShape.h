@@ -8,6 +8,7 @@
 #include "./include/circle.h"
 #include "./include/square.h"
 #include "./include/triangle.h"
+#include "./include/composite.h"
 
 #include <string>
 using std::string;
