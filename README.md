@@ -14,7 +14,7 @@
 * Strategy
 * Factory
 
-![](https://i.imgur.com/j1PbdmS.png)
+  - ![](https://i.imgur.com/j1PbdmS.png)
 
 
 ## File System (Homework)
