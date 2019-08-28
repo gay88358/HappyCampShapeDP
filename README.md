@@ -2,7 +2,7 @@
 ## Step of create a new class
 * Create .h(need to write #ifndef CLASS_H #define CLASS_H  class code  #endif) 
 * Create .cpp(need to include "../include/class.h")
-* Write a make file(need to write a composite.o file)
+* Write a make file(need to write a class.o file)
 * Create utClass.h (remember to include class.h)
 * make clean
 * make
