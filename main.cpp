@@ -1,6 +1,12 @@
 #include <gtest/gtest.h>
-#include "./utShape.h"
-#include "./utPoint.h"
+
+#include "./utClothes.h"
+#include "./utClothesCatalog.h"
+#include "./utOrder.h"
+#include "./utHistory.h"
+#include "./utCustomer.h"
+#include "./utTShop.h"
+#include "./utCustomerTracker.h"
 
 int main( int argc , char **argv )
 {

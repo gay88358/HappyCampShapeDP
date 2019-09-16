@@ -1,51 +1,56 @@
 INC_DIR = include
 SRC = src
-TARGET = shape
+TARGET = tShop
+UI = tUI
 
-all: $(TARGET) 
+all: $(TARGET) $(UI)
 
-$(TARGET): main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o composite.o
+$(TARGET): main.o clothes.o clothesCatalog.o order.o lineItem.o history.o customer.o tShop.o customerTracker.o utility.o
 ifeq (${OS}, Windows_NT) 
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o composite.o -lgtest
+	g++ -o $(TARGET) main.o clothes.o clothesCatalog.o order.o lineItem.o history.o customer.o tShop.o customerTracker.o utility.o -lgtest
 else
-	g++ -o $(TARGET) main.o shape.o rectangle.o circle.o square.o triangle.o point.o shapePrinter.o composite.o  -lgtest -lpthread
+	g++ -o $(TARGET) main.o clothes.o clothesCatalog.o order.o lineItem.o history.o customer.o tShop.o customerTracker.o utility.o -lgtest -lpthread
 endif
+
+$(UI): mainWindow.o clothes.o clothesCatalog.o order.o lineItem.o history.o customer.o tShop.o customerTracker.o utility.o
+ifeq (${OS}, Windows_NT) 
+	g++ -o $(UI) mainWindow.o clothes.o clothesCatalog.o order.o lineItem.o history.o customer.o tShop.o customerTracker.o utility.o -lgtest
+else
+	g++ -o $(UI) mainWindow.o clothes.o clothesCatalog.o order.o lineItem.o history.o customer.o tShop.o customerTracker.o utility.o -lgtest -lpthread
+endif
+
+mainWindow.o: mainWindow.cpp
+	g++ -std=gnu++0x -c mainWindow.cpp
 
 main.o: main.cpp
 	g++ -std=gnu++0x -c main.cpp
 
-shape.o: $(INC_DIR)/shape.h $(SRC)/shape.cpp
-	g++ -std=gnu++0x -c $(SRC)/shape.cpp
+clothes.o: $(INC_DIR)/clothes.h $(SRC)/clothes.cpp
+	g++ -std=gnu++0x -c $(SRC)/clothes.cpp
 
-rectangle.o: $(INC_DIR)/rectangle.h $(SRC)/rectangle.cpp
-	g++ -std=gnu++0x -c $(SRC)/rectangle.cpp
+clothesCatalog.o: $(INC_DIR)/clothesCatalog.h $(SRC)/clothesCatalog.cpp
+	g++ -std=gnu++0x -c $(SRC)/clothesCatalog.cpp
 
-circle.o: $(INC_DIR)/circle.h $(SRC)/circle.cpp
-	g++ -std=gnu++0x -c $(SRC)/circle.cpp
+order.o: $(INC_DIR)/order.h $(SRC)/order.cpp
+	g++ -std=gnu++0x -c $(SRC)/order.cpp
 
-square.o: $(INC_DIR)/square.h $(SRC)/square.cpp
-	g++ -std=gnu++0x -c $(SRC)/square.cpp
+lineItem.o: $(INC_DIR)/lineItem.h $(SRC)/lineItem.cpp
+	g++ -std=gnu++0x -c $(SRC)/lineItem.cpp
 
-shapePrinter.o: $(INC_DIR)/shapePrinter.h $(SRC)/shapePrinter.cpp
-	g++ -std=gnu++0x -c $(SRC)/shapePrinter.cpp
+history.o: $(INC_DIR)/history.h $(SRC)/history.cpp
+	g++ -std=gnu++0x -c $(SRC)/history.cpp
 
-composite.o: $(INC_DIR)/composite.h $(SRC)/composite.cpp
-	g++ -std=gnu++0x -c $(SRC)/composite.cpp
+customer.o: $(INC_DIR)/customer.h $(SRC)/customer.cpp
+	g++ -std=gnu++0x -c $(SRC)/customer.cpp
 
-# shapeFormatter.o: $(INC_DIR)/shapeFormatter.h $(SRC)/shapeFormatter.cpp
-# 	g++ -std=gnu++0x -c $(SRC)/shapeFormatter.cpp
+tShop.o: $(INC_DIR)/tShop.h $(SRC)/tShop.cpp
+	g++ -std=gnu++0x -c $(SRC)/tShop.cpp
 
-# xmlShapeFormatter.o: $(INC_DIR)/xmlShapeFormatter.h $(SRC)/xmlShapeFormatter.cpp
-# 	g++ -std=gnu++0x -c $(SRC)/xmlShapeFormatter.cpp
+customerTracker.o: $(INC_DIR)/customerTracker.h $(SRC)/customerTracker.cpp
+	g++ -std=gnu++0x -c $(SRC)/customerTracker.cpp
 
-# plainTextShapeFormatter.o: $(INC_DIR)/plainTextShapeFormatter.h $(SRC)/plainTextShapeFormatter.cpp
-# 	g++ -std=gnu++0x -c $(SRC)/plainTextShapeFormatter.cpp
-
-triangle.o: $(INC_DIR)/triangle.h $(SRC)/triangle.cpp
-	g++ -std=gnu++0x -c $(SRC)/triangle.cpp
-
-point.o: $(INC_DIR)/point.h $(SRC)/point.cpp
-	g++ -std=gnu++0x -c $(SRC)/point.cpp
+utility.o: $(INC_DIR)/utility.h $(SRC)/utility.cpp
+	g++ -std=gnu++0x -c $(SRC)/utility.cpp
 
 clean:	
 ifeq (${OS}, Windows_NT) 
