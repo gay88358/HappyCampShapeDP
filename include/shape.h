@@ -12,6 +12,7 @@ class Shape {
 public:
     static Shape* createTriangle(vector<Point*> points);
     static Shape* createRectangle(double height, double width);
+    static Shape* createCircle(ShapeFormatter * shapeFormatter, double radius);
     static Shape* createCircle(double radius);
     static Shape* createSqaure(double side);
     static Shape* createComposite();

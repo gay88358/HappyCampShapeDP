@@ -29,6 +29,9 @@ Shape* Shape::createComposite() {
     return new Composite();
 }
 
+Shape* Shape::createCircle(ShapeFormatter * shapeFormatter, double radius) {
+    return new Circle(shapeFormatter, radius);
+}
 
 Shape* Shape::createComposite(ShapeFormatter * shapeFormatter) {
     return new Composite(shapeFormatter);
@@ -47,7 +50,5 @@ string Shape::getFormattedData() {
     return this->_shapeFormatter->getFormattedData();
 }
 
-
 void Shape::add(Shape* shape) {
-    // throw exception
 }
