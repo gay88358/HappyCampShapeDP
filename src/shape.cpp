@@ -8,6 +8,11 @@
 #include "../include/triangle.h"
 #include "../include/point.h"
 
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 Shape* Shape::createTriangle(vector<Point*> points) {
     return new Triangle(points);
 }
@@ -33,22 +38,31 @@ Shape* Shape::createCircle(ShapeFormatter * shapeFormatter, double radius) {
     return new Circle(shapeFormatter, radius);
 }
 
-Shape* Shape::createComposite(ShapeFormatter * shapeFormatter) {
-    return new Composite(shapeFormatter);
-}
+// Shape* Shape::createComposite(ShapeFormatter * shapeFormatter) {
+//     return new Composite(shapeFormatter);
+// }
 
 Shape::Shape(string type) {
     this->_type = type;
 }
 
-Shape::Shape(ShapeFormatter * shapeFormatter) {
-    this->_shapeFormatter = shapeFormatter;
+// Shape::Shape(ShapeFormatter * shapeFormatter) {
+//     this->_shapeFormatter = shapeFormatter;
+// }
+
+// string Shape::getFormattedData() {
+//     this->_shapeFormatter->formatting(this);
+//     return this->_shapeFormatter->getFormattedData();
+// }
+
+
+<<<<<<< HEAD
+=======
+string Shape::getFormattedData(ShapeFormatter *shapeFormatter) {
+    shapeFormatter->formatting(this);
+    return shapeFormatter->getFormattedData();
 }
 
-string Shape::getFormattedData() {
-    this->_shapeFormatter->formatting(this);
-    return this->_shapeFormatter->getFormattedData();
-}
-
+>>>>>>> be6c72dc8351d5ea6ac7a5339da7f6f6e323609a
 void Shape::add(Shape* shape) {
 }
